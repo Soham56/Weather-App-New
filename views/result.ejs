@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="../Css-Files/result.css">
+    <script src="https://kit.fontawesome.com/49c2cf6f4f.js" crossorigin="anonymous"></script>
+</head>
+<body style='background-image: url("<%= bg_img %>");'>
+    
+    <div class="container">
+        <div class="main box">
+            <div class="temparature-icon"><img src="<%= icon_pic %>" alt=""></div>
+            <div class="temparature">
+                <h1><%= temp %>&deg; <%= unitAbbr %></h1>
+            </div>
+            <div class="description-body">
+                <p class="description"><i class="fa-solid fa-grid-round"></i> <%= description %></p>
+                <p><i class="fa-solid fa-location-dot"></i> <%= place %> </p>
+                <p class="date-of-location"><i class="fa-solid fa-calendar-days"></i> <%= cityDateFormat %></p>
+                <p class="time-of-location"><i class="fa-regular fa-clock"></i> <%= cityTimeFormat %></p>
+            </div>
+        </div>
+        <div class="wind box">
+            <h1 class="wind-heading">Wind</i></h1>
+            <hr>
+            <div class="wind-others">
+                <div class="wind-others-box"><p>Speed</p> <p><%= wind_speed %> <%= windSpeedUnit %></p></div>
+                <div class="wind-others-box"><p>Wind-direction</p> <p> <%= wind_deg %>&deg; </p></div>
+                <div class="wind-others-box"><p>Gust</p> <p> <%= wind_gust %> <%= windSpeedUnit %> </p></div>
+            </div>
+        </div>
+        <div class="others box">
+            <div class="other-section-1">
+                <li>Latitude: <%= latitude %></li>
+                <li>Longitude: <%= longitude %></li>
+                <li>Min Temperature: <%= temp_min %>&deg; <%= unitAbbr %> </li>
+                <li>Max Temperature: <%= temp_max %>&deg; <%= unitAbbr %></li>
+            </div>
+            <div class="other-section-2">
+                <li>Pressure: <%= pressure %> hPa</li>
+                <li>Humidity: <%= humidity %> %</li>
+                <li>Visibility: <%= visibility %> meter</li>
+                <li>Rain Volume (1hr): <%= rain %></li>
+            </div>
+        </div>
+        <div class="forecast box">
+            <div class="forecast-heading">
+                <h1>Weather Forecast</h1>
+                <hr>
+            </div>
+            <div class="forecast-main">
+                <div class="forecast-card">
+                    <div class="card-icon"><img src="<%= forecastDataOne_icon_pic %>" alt=""></div>
+                    <div class="card-temp"><%= forecastDataOne_temp %>&deg; <%= unitAbbr %></div>
+                    <div class="card-description"><%= forecastDataOne_description %></div>
+                    <div class="card-time"><%= forecastDataOne_time %></div>
+                    <div class="card-date"><%= forecastDataOne_date %></div>
+
+                </div>
+                <div class="forecast-card">
+                    <div class="card-icon"><img src="<%= forecastDataTwo_icon_pic %>" alt=""></div>
+                    <div class="card-temp"><%= forecastDataTwo_temp %>&deg; <%= unitAbbr %></div>
+                    <div class="card-description"><%= forecastDataTwo_description %></div>
+                    <div class="card-time"><%= forecastDataTwo_time %></div>
+                    <div class="card-date"><%= forecastDataTwo_date %></div>
+                </div>
+                <div class="forecast-card">
+                    <div class="card-icon"><img src="<%= forecastDataThree_icon_pic %>" alt=""></div>
+                    <div class="card-temp"><%= forecastDataThree_temp %>&deg; <%= unitAbbr %></div>
+                    <div class="card-description"><%= forecastDataThree_description %></div>
+                    <div class="card-time"><%= forecastDataThree_time %></div>
+                    <div class="card-date"><%= forecastDataThree_date %></div>
+                </div>
+                <div class="forecast-card">
+                    <div class="card-icon"><img src="<%= forecastDataFour_icon_pic %>" alt=""></div>
+                    <div class="card-temp"><%= forecastDataFour_temp %>&deg; <%= unitAbbr %></div>
+                    <div class="card-description"><%= forecastDataFour_description %></div>
+                    <div class="card-time"><%= forecastDataFour_time %></div>
+                    <div class="card-date"><%= forecastDataFour_date %></div>
+                </div>
+                <div class="forecast-card">
+                    <div class="card-icon"><img src="<%= forecastDataFive_icon_pic %>" alt=""></div>
+                    <div class="card-temp"><%= forecastDataFive_temp %>&deg; <%= unitAbbr %></div>
+                    <div class="card-description"><%= forecastDataFive_description %></div>
+                    <div class="card-time"><%= forecastDataFive_time %></div>
+                    <div class="card-date"><%= forecastDataFive_date %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../Js-Files/result.js"></script>
+</body>
+</html>
