@@ -25,7 +25,7 @@ app.get("/", (req,res)=>{
 // Post Request
 app.post("/", (req,res)=>{
     let cityName = req.body.cityName;
-    let units = req.body.units;
+    let units = String(req.body.units).toLowerCase();
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=4747c276c6a69bf9c17a95447368830b&units=${getTempUnit(units)}`;
     const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=4747c276c6a69bf9c17a95447368830b&units=${getTempUnit(units)}`;
@@ -33,8 +33,6 @@ app.post("/", (req,res)=>{
     var values = {};
 
     https.get(url, function(respond){
-        
-        // console.log(respond.statusCode)
 
         if(respond.statusCode!=200){
             res.sendFile(__dirname + "/faliurePage.html");
@@ -43,8 +41,6 @@ app.post("/", (req,res)=>{
         
             respond.on("data", function(data){
                 const weatherData = JSON.parse(data);
-
-                console.log(weatherData);
                 
                 //main-section
                 let description = weatherData.weather[0].description;
@@ -93,7 +89,7 @@ app.post("/", (req,res)=>{
                 values.cityDateFormat= cityDateFormat;
                 values.cityTimeFormat= cityTimeFormat;
                 values.description= description;
-                values.place= cityName;
+                values.place= cityName.charAt(0).toUpperCase() + cityName.slice(1);
                 values.wind_speed= wind_speed;
                 values.wind_deg= wind_deg;
                 values.wind_gust= wind_gust;
@@ -126,8 +122,6 @@ app.post("/", (req,res)=>{
                             let forecastDataThree = forecastData.list[2];
                             let forecastDataFour = forecastData.list[3];
                             let forecastDataFive = forecastData.list[4];
-
-                            // console.log(forecastDataOne.weather[0]);
             
                             values.forecastDataOne_icon_pic = `https://openweathermap.org/img/wn/${forecastDataOne.weather[0].icon}@2x.png`;
                             values.forecastDataTwo_icon_pic = `https://openweathermap.org/img/wn/${forecastDataTwo.weather[0].icon}@2x.png`;
@@ -158,8 +152,6 @@ app.post("/", (req,res)=>{
                             values.forecastDataThree_time = modifyTime(forecastDataThree.dt_txt.split(' ')[1]);
                             values.forecastDataFour_time = modifyTime(forecastDataFour.dt_txt.split(' ')[1]);
                             values.forecastDataFive_time = modifyTime(forecastDataFive.dt_txt.split(' ')[1]);
-
-                            // console.log(values);
 
                             res.render('result', values);
                         });
